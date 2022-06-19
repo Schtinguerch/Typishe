@@ -1,0 +1,110 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:setup="clr-namespace:Typishe.Setup">
+
+    <Style 
+        x:Key="TypisheTextBlockStyle"
+        TargetType="TextBlock">
+        
+        <Setter Property="FontFamily" Value="{Binding Path=GeneralFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=BackgroundFontBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=GeneralFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=GeneralFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="TextDecorations" Value="{Binding Path=GeneralFontDecorations ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheBigTextBlockStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource TypisheTextBlockStyle}">
+
+        <Setter Property="RenderTransformOrigin" Value="0 0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="TypisheExerciseTextBlockStyle"
+        TargetType="TextBlock">
+
+        <Setter Property="FontFamily" Value="{Binding Path=ExerciseFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=ExerciseCharactersBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=ExerciseFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=ExerciseFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheRaidedExerciseTextBlockStyle"
+        TargetType="TextBlock">
+
+        <Setter Property="FontFamily" Value="{Binding Path=RaidedExerciseFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=RaidedExerciseCharactersBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=RaidedExerciseFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=RaidedExerciseFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheMainKeyStyle"
+        TargetType="TextBlock">
+
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{Binding Path=KeyboardFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=KeyboardFontBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=KeyboardFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=KeyboardFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="TextDecorations" Value="{Binding Path=KeyboardFontDecorations ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheSmallKeyStyle"
+        BasedOn="{StaticResource TypisheMainKeyStyle}"
+        TargetType="TextBlock">
+
+        <Setter Property="FontSize" Value="{Binding Path=KeyboardSmallKeysFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheServiceKeyStyle"
+        BasedOn="{StaticResource TypisheMainKeyStyle}"
+        TargetType="TextBlock">
+
+        <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style
+        x:Key="TypisheStaticCaretExerciseTextStyle"
+        TargetType="TextBlock">
+
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{Binding Path=ExerciseFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=ExerciseCharactersBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=ExerciseFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=ExerciseFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="TextDecorations" Value="{Binding Path=ExerciseFontDecorations ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+
+    <Style
+        x:Key="TypisheStaticCaretExerciseRaidedTextStyle"
+        TargetType="TextBlock">
+
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{Binding Path=RaidedExerciseFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=RaidedExerciseCharactersBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontSize" Value="{Binding Path=RaidedExerciseFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="FontWeight" Value="{Binding Path=RaidedExerciseFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        <Setter Property="TextDecorations" Value="{Binding Path=RaidedExerciseFontDecorations ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+    </Style>
+</ResourceDictionary>

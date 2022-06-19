@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <PackageIcon>TypisheLogo3.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\TypisheLogo3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\Cases\TypisheLogo3.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="WPF.ImageEffects" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TypisheApi\TypisheApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AnimatedScrollViewer">
+      <HintPath>D:\Downloads\GitHub repos\AnimatedScrollViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="AnimatedTextBoxBehavior">
+      <HintPath>D:\Downloads\GitHub repos\AnimatedTextBoxBehavior\AnimatedTextBoxBehavior\bin\Release\AnimatedTextBoxBehavior.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>D:\Downloads\GitHub repos\AnimatedTextBoxBehavior\AnimatedTextBoxBehavior\bin\Release\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>D:\Downloads\GitHub repos\AnimatedTextBoxBehavior\AnimatedTextBoxBehavior\bin\Release\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\TypisheLogo3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

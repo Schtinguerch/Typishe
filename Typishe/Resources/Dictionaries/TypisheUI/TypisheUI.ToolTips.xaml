@@ -1,0 +1,27 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:setup="clr-namespace:Typishe.Setup">
+
+    <Style TargetType="ToolTip">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border
+                        BorderThickness="0"
+                        CornerRadius="6"
+                        Padding="8 6 8 6"
+                        Background="{Binding Path=MenuBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+
+                        <ContentPresenter
+                            TextBlock.FontFamily="{Binding Path=GeneralFontFamily ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            TextBlock.Foreground="{Binding Path=MenuFontBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            TextBlock.FontSize="{Binding Path=GeneralFontSize ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            TextBlock.FontWeight="{Binding Path=GeneralFontWeight ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

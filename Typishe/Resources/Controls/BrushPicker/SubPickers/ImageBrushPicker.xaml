@@ -1,0 +1,208 @@
+﻿<Page x:Class="Typishe.Resources.Controls.BrushPicker.SubPickers.ImageBrushPicker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Typishe.Resources.Controls.BrushPicker.SubPickers"
+      xmlns:setup="clr-namespace:Typishe.Setup"
+      xmlns:lo="clr-namespace:TypisheApi.Localizations;assembly=TypisheApi"
+      mc:Ignorable="d" 
+      d:DesignHeight="180" d:DesignWidth="380"
+      Title="ImageBrushPicker">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Style="{StaticResource TypisheTextBlockStyle}"
+                VerticalAlignment="Center"
+                
+                Text="{x:Static lo:Resources.Link}"
+                Margin="0 0 8 0">
+            </TextBlock>
+
+            <TextBox
+                Grid.Column="1"
+                Name="ImageUriTextBox"
+                
+                Style="{StaticResource TypisheTextBoxStyle}"
+                Margin="0 4 0 4">
+            </TextBox>
+
+            <Button
+                Grid.Column="2"
+                Style="{StaticResource TypisheButtonStyle}"
+                
+                Content="{x:Static lo:Resources.Browse}"
+                Margin="8 4 0 4"
+                
+                Name="BrowseButton"
+                Click="BrowseButton_Click">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0 8 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.618*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle
+                Grid.Column="0"
+                RadiusX="8" RadiusY="8"
+                Margin="0 0 8 0"
+                
+                d:Fill="Green"
+                StrokeThickness="1"
+                Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+
+                <Rectangle.Fill>
+                    <ImageBrush 
+                        x:Name="CurrentImageBrush" 
+                        ImageSource="{Binding ElementName=ImageUriTextBox, Path=Text}">
+                        
+                    </ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock
+                    Style="{StaticResource TypisheTextBlockStyle}"
+                    Text="{x:Static lo:Resources.TileMode}">
+                </TextBlock>
+
+                <ComboBox
+                    Style="{StaticResource TypisheComboBoxStyle}"
+                    Margin="0 3 0 3"
+                    
+                    Name="TileModeComboBox"
+                    SelectionChanged="TileModeComboBox_SelectionChanged">
+
+                    <ComboBox.Items>
+                        <TextBlock Text="{x:Static lo:Resources.TmNone}"/>
+                        <TextBlock Text="{x:Static lo:Resources.TmTile}"/>
+                        <TextBlock Text="{x:Static lo:Resources.TmFlipX}"/>
+                        <TextBlock Text="{x:Static lo:Resources.TmFlipY}"/>
+                        <TextBlock Text="{x:Static lo:Resources.TmFlipXY}"/>
+                    </ComboBox.Items>
+                </ComboBox>
+
+                <TextBlock
+                    Style="{StaticResource TypisheTextBlockStyle}"
+                    Text="{x:Static lo:Resources.Stretch}">
+                </TextBlock>
+
+                <ComboBox
+                    Style="{StaticResource TypisheComboBoxStyle}"
+                    Margin="0 3 0 3"
+                    
+                    Name="StretchComboBox"
+                    SelectionChanged="StretchComboBox_SelectionChanged">
+
+                    <ComboBox.Items>
+                        <TextBlock Text="{x:Static lo:Resources.StNone}"/>
+                        <TextBlock Text="{x:Static lo:Resources.StFill}"/>
+                        <TextBlock Text="{x:Static lo:Resources.StUniform}"/>
+                        <TextBlock Text="{x:Static lo:Resources.StUniformToFill}"/>
+                    </ComboBox.Items>
+                </ComboBox>
+
+                <TextBlock
+                    Style="{StaticResource TypisheTextBlockStyle}"
+                    Text="{x:Static lo:Resources.ImageSize}">
+                </TextBlock>
+
+                <Grid Margin="0 3 0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Grid.Column="0"
+                        Style="{StaticResource TypisheTextBoxStyle}"
+                        
+                        Name="ViewportScaleXTextBox"
+                        TextChanged="ViewportScaleXTextBox_TextChanged">
+                    </TextBox>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        
+                        Text="%"
+                        Margin="6 0 6 0">
+                    </TextBlock>
+
+                    <Slider
+                        Grid.Column="2"
+                        Style="{StaticResource TypisheHorizontalSliderStyle}"
+                        MinWidth="10"
+                        
+                        Minimum="0"
+                        Maximum="100"
+                        SmallChange="1"
+                        
+                        IsSnapToTickEnabled="True" 
+                        TickFrequency="1"
+                        
+                        Name="ViewportScaleXSlider"
+                        ValueChanged="ViewportScaleXSlider_ValueChanged">
+                    </Slider>
+                </Grid>
+
+                <Grid Margin="0 3 0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Grid.Column="0"
+                        Style="{StaticResource TypisheTextBoxStyle}"
+                        
+                        Name="ViewportScaleYTextBox"
+                        TextChanged="ViewportScaleYTextBox_TextChanged">
+                    </TextBox>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        
+                        Text="%"
+                        Margin="6 0 6 0">
+                    </TextBlock>
+
+                    <Slider
+                        Grid.Column="2"
+                        Style="{StaticResource TypisheHorizontalSliderStyle}"
+                        MinWidth="10"
+                        
+                        Minimum="0"
+                        Maximum="100"
+                        SmallChange="1"
+                        
+                        IsSnapToTickEnabled="True" 
+                        TickFrequency="1"
+                        
+                        Name="ViewportScaleYSlider"
+                        ValueChanged="ViewportScaleYSlider_ValueChanged">
+                    </Slider>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Typishe.Resources.Controls.TemporaryPopupMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Typishe.Resources.Controls" 
+             xmlns:controls="clr-namespace:Typishe.Controls"
+             xmlns:setup="clr-namespace:Typishe.Setup"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="ShowMessageStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="ScaleTransform"
+                Storyboard.TargetProperty="ScaleX"
+                
+                From="1" To="0"
+                Duration="00:00:03">
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetName="MainBorder"
+                Storyboard.TargetProperty="Opacity"
+                
+                From="0" To="1"
+                Duration="00:00:0.3"
+                DecelerationRatio="1">
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetName="MainBorder"
+                Storyboard.TargetProperty="Opacity"
+                
+                From="1" To="0"
+                DecelerationRatio="1"
+                
+                BeginTime="00:00:2.7"
+                Duration="00:00:0.3">
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    
+    <controls:ClippingBorder
+        Background="{Binding Path=BackgroundBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+        BorderBrush="{Binding Path=ControlBorderBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+        BorderThickness="1"
+        CornerRadius="8" 
+        ClipToBounds="True"
+        
+        x:Name="MainBorder"
+        Opacity="0"
+        d:Opacity="1">
+
+        <Grid>
+            <StackPanel
+                Margin="12"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                
+                    Margin="0 0 12 0"
+                    VerticalAlignment="Center"
+                
+                    Name="SignTextBlock"
+                    Foreground="{Binding Path=AccentBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                    Text="&#xE7BA;">
+                </TextBlock>
+
+                <TextBlock
+                    Style="{StaticResource TypisheTextBlockStyle}"
+                    VerticalAlignment="Center"
+                
+                    MaxWidth="200"
+                    MinWidth="100"
+                    
+                    Name="MessageTextBlock"
+                    d:Text="There's a message"
+                    TextWrapping="Wrap">
+                </TextBlock>
+            </StackPanel>
+
+            <Rectangle
+                VerticalAlignment="Bottom"
+                Fill="{Binding Path=AccentBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                
+                Height="4"
+                RadiusX="8" RadiusY="8"
+                Name="TimeRectangle">
+
+                <Rectangle.RenderTransform>
+                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Grid>
+    </controls:ClippingBorder>
+</UserControl>

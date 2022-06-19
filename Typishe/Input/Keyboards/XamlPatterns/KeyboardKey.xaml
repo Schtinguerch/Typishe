@@ -1,0 +1,145 @@
+﻿<UserControl 
+    x:Class="Typishe.Input.Keyboards.XamlPatterns.KeyboardKey"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:setup="clr-namespace:Typishe.Setup"
+    xmlns:local="clr-namespace:Typishe.Input.Keyboards.XamlPatterns"
+    mc:Ignorable="d" 
+    d:DesignHeight="50" d:DesignWidth="50">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="SplashRectangleStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="SplashRectangle"
+                Storyboard.TargetProperty="Opacity"
+                
+                From="0"
+                To="1"
+                Duration="00:00:00">
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetName="SplashRectangle"
+                Storyboard.TargetProperty="Opacity"
+                
+                From="1"
+                To="0"
+                Duration="00:00:0.3">
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetName="SplashRectScale"
+                Storyboard.TargetProperty="ScaleX"
+                
+                From="1"
+                To="2"
+                Duration="00:00:0.3"
+                DecelerationRatio="1">
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    
+    <Grid Margin="2">
+        <Rectangle 
+            Fill="Transparent"
+            Stroke="{Binding Path=KeyboardHighlightBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            
+            Name="SplashRectangle"
+            StrokeThickness="6"
+            
+            RenderTransformOrigin="0.5 0.5"
+            Opacity="0"
+            
+            RadiusX="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            RadiusY="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+
+            <Rectangle.RenderTransform>
+                <ScaleTransform x:Name="SplashRectScale" ScaleX="1" ScaleY="{Binding ScaleX, RelativeSource={RelativeSource Self}}"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        
+        <Rectangle 
+            Fill="{Binding Path=KeyboardBackgroundBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            Stroke="{Binding Path=KeyboardBorderBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            StrokeThickness="{Binding Path=KeyBorderThickness ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            
+            RadiusX="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            RadiusY="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+        </Rectangle>
+
+        <Rectangle
+            Fill="{Binding Path=KeyboardHighlightBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            Stroke="{Binding Path=KeyboardHighlightBorderBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            StrokeThickness="{Binding Path=KeyBorderThickness ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            
+            RadiusX="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            RadiusY="{Binding Path=KeyCornerRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            
+            Name="KeyHighlightRectangle"
+            Opacity="0">
+        </Rectangle>
+
+        <Grid 
+            Margin="5"
+            Name="StandardKeyGrid"
+            Visibility="Visible">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                
+                Name="MainCharacterTextBlock"
+                Style="{StaticResource TypisheMainKeyStyle}">
+            </TextBlock>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                
+                Name="ShiftCharacterTextBlock"
+                Style="{StaticResource TypisheSmallKeyStyle}">
+            </TextBlock>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                
+                Name="AltGrCharacterTextBlock"
+                Style="{StaticResource TypisheSmallKeyStyle}">
+            </TextBlock>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                
+                Name="ShiftAltGrCharacterTextBlock"
+                Style="{StaticResource TypisheSmallKeyStyle}">
+            </TextBlock>
+        </Grid>
+
+        <Grid 
+            Name="ServiceKeyGrid"
+            Visibility="Hidden">
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                
+                Name="CommandTextBlock"
+                Style="{StaticResource TypisheServiceKeyStyle}">
+            </TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

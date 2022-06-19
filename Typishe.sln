@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Typishe", "Typishe\Typishe.csproj", "{85C51A86-74EB-43DF-B5BB-F3895CF6DFF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypisheApi", "TypisheApi\TypisheApi.csproj", "{55484560-8E3A-4C47-9DBE-88DB36440D09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginDemo", "PluginDemo\PluginDemo.csproj", "{1587B766-E941-49E2-96C7-2702D87BD9F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85C51A86-74EB-43DF-B5BB-F3895CF6DFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C51A86-74EB-43DF-B5BB-F3895CF6DFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C51A86-74EB-43DF-B5BB-F3895CF6DFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C51A86-74EB-43DF-B5BB-F3895CF6DFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55484560-8E3A-4C47-9DBE-88DB36440D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55484560-8E3A-4C47-9DBE-88DB36440D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55484560-8E3A-4C47-9DBE-88DB36440D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55484560-8E3A-4C47-9DBE-88DB36440D09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1587B766-E941-49E2-96C7-2702D87BD9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1587B766-E941-49E2-96C7-2702D87BD9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1587B766-E941-49E2-96C7-2702D87BD9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1587B766-E941-49E2-96C7-2702D87BD9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4117B471-8CDA-41E5-85E2-CB36C1F2ED55}
+	EndGlobalSection
+EndGlobal

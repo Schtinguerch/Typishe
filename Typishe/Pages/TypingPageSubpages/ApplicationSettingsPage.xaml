@@ -1,0 +1,948 @@
+﻿<Page x:Class="Typishe.Pages.TypingPageSubpages.ApplicationSettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Typishe.Pages.TypingPageSubpages"
+      xmlns:setup="clr-namespace:Typishe.Setup"
+      xmlns:lo="clr-namespace:TypisheApi.Localizations;assembly=TypisheApi"
+      xmlns:asw="clr-namespace:AnimatedScrollViewer;assembly=AnimatedScrollViewer"
+      xmlns:brushpicker="clr-namespace:Typishe.Resources.Controls.BrushPicker"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="500"
+      Title="ApplicationSettingsPage">
+
+    <Grid Background="{Binding Path=BackgroundBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid  
+            Grid.Row="0">
+            
+            <Border
+                Background="{Binding Path=MenuBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                BorderBrush="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                
+                BorderThickness="0 0 0 1" ClipToBounds="True"
+                CornerRadius="0 0 10 10">
+            </Border>
+
+            <StackPanel
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <Button 
+                    Style="{StaticResource TypisheTransparentButtonWithSignStyle}"
+                    Content="&#xE8E5;"
+                    
+                    Margin="0 0 4 0"
+                    Width="48">
+                </Button>
+
+                <Button 
+                    Style="{StaticResource TypisheTransparentButtonWithSignStyle}"
+                    Content="&#xE78C;"
+                    
+                    Margin="0 0 4 0"
+                    Width="48">
+                </Button>
+
+                <Button 
+                    Style="{StaticResource TypisheTransparentButtonWithSignStyle}"
+                    Content="&#xE792;"
+                    
+                    Margin="0 0 4 0"
+                    Width="48">
+                </Button>
+            </StackPanel>
+
+            <StackPanel
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+
+                <Button 
+                    Style="{StaticResource TypisheTransparentButtonWithSignStyle}"
+                    Content="&#xE73E;"
+                    
+                    Margin="0 0 4 0"
+                    Width="48">
+                </Button>
+
+                <Button 
+                    Style="{StaticResource TypisheTransparentButtonWithSignStyle}"
+                    Content="&#xE711;"
+                    
+                    Width="48">
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <asw:AnimatedScrollViewer
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Visible"
+            HorizontalScrollBarVisibility="Disabled">
+
+            <Grid>
+                <StackPanel
+                    Margin="20 20 20 0"
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        HorizontalAlignment="Center"
+                        Text="Element brushes"
+                        
+                        Margin="0 20 0 20"
+                        FontWeight="Black">
+                    </TextBlock>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Background brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="BackgroundBrushRectangle"
+                            
+                            Fill="{Binding Path=BackgroundBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditBackgroundBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Menu background brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="MenuBrushRectangle"
+                            
+                            Fill="{Binding Path=MenuBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditMenuBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Control background brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="ControlBackgroundBrushRectangle"
+                            
+                            Fill="{Binding Path=ControlBackgroundBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditControlBackgroundBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Control border brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="ControlBorderBrushRectangle"
+                            
+                            Fill="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditControlBorderBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Control shadow color">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="ControlShadowBrushRectangle"
+                            
+                            Fill="{Binding Path=ShadowColor, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditControlShadowBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Accent brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="AccentBrushRectangle"
+                            
+                            Fill="{Binding Path=AccentBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditAccentBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Warning accent brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="WarningAccentBrushRectangle"
+                            
+                            Fill="{Binding Path=AccentWarningBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditWarningAccentBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <TextBlock
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        HorizontalAlignment="Center"
+                        Text="Fonts brushes"
+                        
+                        Margin="0 20 0 20"
+                        FontWeight="Black">
+                    </TextBlock>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Background font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="BackgroundFontBrushRectangle"
+                            
+                            Fill="{Binding Path=BackgroundFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditBackgroundFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Menu font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="MenuFontBrushRectangle"
+                            
+                            Fill="{Binding Path=MenuFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditMenuFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Control font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="ControlFontBrushRectangle"
+                            
+                            Fill="{Binding Path=ControlFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditControlFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Accent font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="AccentFontBrushRectangle"
+                            
+                            Fill="{Binding Path=AccentFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditAccentFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Exercise text font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="ExerciseCharactersBrushRectangle"
+                            
+                            Fill="{Binding Path=ExerciseCharactersBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditExerciseFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Exercise entered text font brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="RaidedExerciseCharactersBrushRectangle"
+                            
+                            Fill="{Binding Path=RaidedExerciseCharactersBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditRaidedExerciseFontBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <TextBlock
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        HorizontalAlignment="Center"
+                        Text="Font settings"
+                        
+                        Margin="0 20 0 20"
+                        FontWeight="Black">
+                    </TextBlock>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="GUI text font">
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            
+                            Foreground="{Binding Path=BackgroundFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontFamily="{Binding Path=GeneralFontFamily, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontSize="{Binding Path=GeneralFontSize, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontWeight="{Binding Path=GeneralFontWeight, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            TextDecorations="{Binding Path=GeneralFontDecorations, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            Text="Text!?.">
+                        </TextBlock>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditGeneralFontButton"
+                            Click="EditFontOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard text font">
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            
+                            Foreground="{Binding Path=KeyboardFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontFamily="{Binding Path=KeyboardFontFamily, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontSize="{Binding Path=KeyboardFontSize, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontWeight="{Binding Path=KeyboardFontWeight, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            TextDecorations="{Binding Path=KeyboardFontDecorations, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            Text="Text!?.">
+                        </TextBlock>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardFontButton"
+                            Click="EditFontOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Exercise text font">
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            
+                            Foreground="{Binding Path=ExerciseCharactersBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontFamily="{Binding Path=ExerciseFontFamily, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontSize="{Binding Path=ExerciseFontSize, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontWeight="{Binding Path=ExerciseFontWeight, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            Text="Text!?.">
+                        </TextBlock>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditExerciseFontButton"
+                            Click="EditFontOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Exercise entered text font">
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            
+                            Foreground="{Binding Path=RaidedExerciseCharactersBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontFamily="{Binding Path=RaidedExerciseFontFamily, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontSize="{Binding Path=RaidedExerciseFontSize, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            FontWeight="{Binding Path=RaidedExerciseFontWeight, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            Text="Text!?.">
+                        </TextBlock>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditRaidedExerciseFontButton"
+                            Click="EditFontOnClick">
+                        </Button>
+                    </Grid>
+
+                    <TextBlock
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        HorizontalAlignment="Center"
+                        Text="Keyboard"
+                        
+                        Margin="0 20 0 20"
+                        FontWeight="Black">
+                    </TextBlock>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard background brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="KeyboardBackgroundBrushRectangle"
+                            
+                            Fill="{Binding Path=KeyboardBackgroundBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardBackgroundBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard border brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="KeyboardBorderBrushRectangle"
+                            
+                            Fill="{Binding Path=KeyboardBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardBorderBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard highlight brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="KeyboardHighlightBrushRectangle"
+                            
+                            Fill="{Binding Path=KeyboardHighlightBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardHighlightBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard highlight border brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="KeyboardHighlightBorderBrushRectangle"
+                            
+                            Fill="{Binding Path=KeyboardHighlightBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardHighlightBorderBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Keyboard mistake brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="KeyboardMistakeBrushRectangle"
+                            
+                            Fill="{Binding Path=KeyboardMistakeBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditKeyboardMistakeBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+                    
+                    
+                </StackPanel>
+
+                <Canvas Name="PickerPositioningCanvas">
+                    <brushpicker:BrushPicker
+                        Width="480"
+                        Height="460"
+                        
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        
+                        x:Name="BrushPicker"
+                        Visibility="Hidden">
+                    </brushpicker:BrushPicker>
+                </Canvas>
+            </Grid>
+        </asw:AnimatedScrollViewer>
+    </Grid>
+</Page>

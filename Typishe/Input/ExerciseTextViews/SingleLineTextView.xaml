@@ -1,0 +1,90 @@
+﻿<Page x:Class="Typishe.Input.ExerciseTextViews.SingleLineTextView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Typishe.Input.ExerciseTextViews"
+      xmlns:setup="clr-namespace:Typishe.Setup" 
+      xmlns:asw="clr-namespace:AnimatedScrollViewer;assembly=AnimatedScrollViewer"
+      mc:Ignorable="d" 
+      d:DesignHeight="250" d:DesignWidth="800"
+      Title="SingleLineTextView">
+
+    <Page.Resources>
+        <Style 
+            x:Key="BasicTextBlockStyle" 
+            TargetType="TextBlock"
+            BasedOn="{StaticResource TypisheExerciseTextBlockStyle}">
+        </Style>
+
+        <Style 
+            x:Key="HighlightedTextBlockStyle" 
+            TargetType="TextBlock"
+            BasedOn="{StaticResource TypisheExerciseTextBlockStyle}">
+
+            <Setter Property="Foreground" Value="{Binding Path=AccentBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}"/>
+        </Style>
+
+        <Style 
+            x:Key="RaidedTextBlockStyle"
+            TargetType="TextBlock" 
+            BasedOn="{StaticResource TypisheRaidedExerciseTextBlockStyle}">
+        </Style>
+
+        <Style x:Key="BasicRunStyle" TargetType="Run">
+            <Setter Property="TextDecorations" Value="None"/>
+        </Style>
+
+        <Style x:Key="CurrentRunStyle" TargetType="Run">
+            <Setter Property="TextDecorations" Value="Underline"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid 
+        VerticalAlignment="Center"
+        Margin="0 5 0 5"
+        Name="BackGrid">
+
+        <Grid.OpacityMask>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                <GradientStop Offset="0.25" Color="Gray"></GradientStop>
+                <GradientStop Offset="0.5" Color="Black"></GradientStop>
+                <GradientStop Offset="0.75" Color="Gray"></GradientStop>
+                <GradientStop Offset="1" Color="Transparent"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle
+            Fill="Transparent"
+            Width="{Binding ElementName=BackGrid, Path=ActualWidth}">
+        </Rectangle>
+
+        <TextBlock
+            Name="MistakenTextBlock"
+            HorizontalAlignment="Center"
+            Style="{StaticResource TypisheStaticCaretExerciseTextStyle}"
+            Foreground="{Binding Path=AccentWarningBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+        </TextBlock>
+
+        <asw:AnimatedScrollViewer 
+            Grid.Row="1"
+            Name="TextScrollViewer"
+            Background="Transparent"
+            
+            VerticalScrollBarVisibility="Disabled"
+            HorizontalScrollBarVisibility="Hidden">
+
+            <StackPanel
+                Name="TextOutputStackPanel"
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+            </StackPanel>
+        </asw:AnimatedScrollViewer>
+    </Grid>
+</Page>
