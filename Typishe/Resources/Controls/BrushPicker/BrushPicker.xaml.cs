@@ -98,5 +98,26 @@ namespace Typishe.Resources.Controls.BrushPicker
             Visibility = Visibility.Collapsed;
             ColorCanceled?.Invoke(Picker.StandardBrush);
         }
+
+        public void ClearEventDelegates()
+        {
+            Picker.ClearEventDelegates();
+
+            if (ColorAccepted != null)
+            {
+                foreach (var eventMethod in ColorAccepted.GetInvocationList())
+                {
+                    ColorAccepted -= (ColorAcceptedHandler) eventMethod;
+                }
+            }
+
+            if (ColorCanceled != null)
+            {
+                foreach (var eventMethod in ColorCanceled.GetInvocationList())
+                {
+                    ColorCanceled -= (ColorCanceledHandler) eventMethod;
+                }
+            }
+        }
     }
 }

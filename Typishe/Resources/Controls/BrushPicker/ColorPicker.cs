@@ -20,5 +20,18 @@ namespace Typishe.Resources.Controls
         }
 
         public Brush StandardBrush { get; set; }
+
+        public void ClearEventDelegates()
+        {
+            if (SelectedColorChanged == null)
+            {
+                return;
+            }
+
+            foreach (var eventMethod in SelectedColorChanged.GetInvocationList())
+            {
+                SelectedColorChanged -= (SelectedColorChangedHandler) eventMethod;
+            }
+        }
     }
 }
