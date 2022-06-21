@@ -22,7 +22,8 @@ using Typishe.Exercises;
 
 using Typishe.Input;
 using Typishe.Service;
-using Localization = TypisheApi.Localizations.Resources;
+using Commands = TypisheApi.Localizations.Commands;
+
 using Typishe.Input.ExerciseTextViews;
 using Typishe.Pages.TypingPageSubpages;
 
@@ -92,10 +93,10 @@ namespace Typishe.Pages
             exerciseView.Exercise.Load(@"D:\Cases\ForMe\TestExercise");
         }
 
-        private void ReloadExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Localization.ReloadExercise);
-        private void PreviousExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Localization.LoadPreviousExercise);
-        private void NextExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Localization.LoadNextExercise);
-        private void RandomExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Localization.LoadRandomExercise);
+        private void ReloadExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Commands.ReloadExercise);
+        private void PreviousExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Commands.LoadPreviousExercise);
+        private void NextExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Commands.LoadNextExercise);
+        private void RandomExerciseButton_Click(object sender, RoutedEventArgs e) => ApplicationCommander.ExecuteCommand(Commands.LoadRandomExercise);
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -114,7 +115,7 @@ namespace Typishe.Pages
 
         public void OpenSettingsPage()
         {
-            var page = new ApplicationSettingsPage();
+            var page = new SettingsPage();
             LeftMenuFrame.Navigate(page);
 
             var storyboard = FindResource("ShowLeftFrameStoryboard") as Storyboard;
