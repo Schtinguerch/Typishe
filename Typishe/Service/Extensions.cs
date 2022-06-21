@@ -140,7 +140,6 @@ namespace Typishe.Service
             };
         }
             
-
         private static double GetHue(Color rgbColor)
         {
             if (rgbColor.R == rgbColor.G && rgbColor.G == rgbColor.B)
@@ -204,6 +203,5 @@ namespace Typishe.Service
 
             return hue;
         }
-   
     }
 }
