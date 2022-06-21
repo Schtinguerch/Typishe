@@ -7,8 +7,9 @@ using System.Windows.Media.Animation;
 
 using Typishe.Exercises;
 using Typishe.Pages;
+using Typishe.Pages.TypingPageSubpages;
 using TypisheApi.Input;
-using Localization = TypisheApi.Localizations.Resources;
+using Commands = TypisheApi.Localizations.Commands;
 
 namespace Typishe.Input
 {
@@ -22,15 +23,16 @@ namespace Typishe.Input
 
         private static Dictionary<string, Action> _commands = new Dictionary<string, Action>() 
         { 
-            { Localization.ReloadExercise, ReloadExercise },
-            { Localization.LoadPreviousExercise, LoadPreviousExercise },
-            { Localization.LoadNextExercise, LoadNextExercise },
-            { Localization.LoadRandomExercise, LoadRandomExercise },
-            { Localization.Settings, OpenSettings },
+            { Commands.ReloadExercise, ReloadExercise },
+            { Commands.LoadPreviousExercise, LoadPreviousExercise },
+            { Commands.LoadNextExercise, LoadNextExercise },
+            { Commands.LoadRandomExercise, LoadRandomExercise },
+            { Commands.OpenSettings, OpenSettings },
         };
 
         public static ExerciseView ExerciseView { get; set; }
         public static TypingPage TypingPage { get; set; }
+        public static SettingsPage SettingsPage { get; set; }
 
         public static bool ExecuteCommand(string commandName)
         {
