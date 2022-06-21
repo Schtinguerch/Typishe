@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 using TypisheApi;
 using TypisheApi.Input;
-using Localization = TypisheApi.Localizations.Resources;
+using Commands = TypisheApi.Localizations.Commands;
 
 namespace PluginDemo
 {
@@ -41,7 +41,7 @@ namespace PluginDemo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationCommander.ExecuteCommand(Localization.ReloadExercise);
+            ApplicationCommander.ExecuteCommand(Commands.ReloadExercise);
         }
     }
 }
