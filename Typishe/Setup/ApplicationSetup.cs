@@ -312,7 +312,7 @@ namespace Typishe.Setup
             RequireCorrectInputMistakes = true,
             ApplicationLanguageCode = "en-US",
             TypingSpeedMeasure = TypingSpeedMeasure.CharactersPerMinute,
-            NumberDisplay = NumberDisplay.JapaneseKanji,
+            NumberDisplay = NumberDisplay.ArabicNumbers,
             ShortCuts = new Dictionary<List<Key>, string>()
             {
                 { new List<Key>() { Key.LeftCtrl, Key.J }, Localization.ReloadExercise },
