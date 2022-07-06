@@ -9,6 +9,7 @@
 
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"></Setter>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="IsEditable" Value="False"></Setter>
 
         <Setter Property="Background" Value="{Binding Path=ControlBackgroundBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"></Setter>
         <Setter Property="Foreground" Value="{Binding Path=ControlFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"></Setter>
@@ -133,8 +134,13 @@
 
                         <TextBox
                             x:Name="PART_EditableTextBox"
-                            Margin="0 0 30 0"
-                            Visibility="Hidden">
+                            Margin="2 2 30 2"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            
+                            Visibility="{TemplateBinding IsEditable, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Style="{DynamicResource TypisheTextBoxStyle}"
+                            Text="{TemplateBinding Text}">
                         </TextBox>
 
                         <Popup
