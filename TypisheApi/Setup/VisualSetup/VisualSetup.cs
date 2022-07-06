@@ -66,7 +66,7 @@ namespace TypisheApi.Setup
             _exerciseFontWeight,
             _raidedExerciseFontWeight;
 
-        private TextDecoration
+        private TextDecorationCollection
             _generalTextDecoration,
             _keyboardTextDecoration;
 
@@ -181,7 +181,7 @@ namespace TypisheApi.Setup
             }
         }
 
-        public TextDecoration GeneralFontDecorations
+        public TextDecorationCollection GeneralFontDecorations
         {
             get => _generalTextDecoration; 
             set
@@ -231,7 +231,7 @@ namespace TypisheApi.Setup
             }
         }
 
-        public TextDecoration KeyboardFontDecorations
+        public TextDecorationCollection KeyboardFontDecorations
         {
             get => _keyboardTextDecoration;
             set
