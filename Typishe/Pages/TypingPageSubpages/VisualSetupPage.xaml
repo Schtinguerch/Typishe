@@ -7,7 +7,7 @@
       xmlns:setup="clr-namespace:Typishe.Setup"
       xmlns:lo="clr-namespace:TypisheApi.Localizations;assembly=TypisheApi"
       xmlns:asw="clr-namespace:AnimatedScrollViewer;assembly=AnimatedScrollViewer"
-      xmlns:brushpicker="clr-namespace:Typishe.Resources.Controls.BrushPicker"
+      xmlns:brushpicker="clr-namespace:Typishe.Resources.Controls.BrushPicker" xmlns:fontpicker="clr-namespace:Typishe.Resources.Controls.FontPicker" xmlns:controls="clr-namespace:Typishe.Controls" xmlns:controls1="clr-namespace:Typishe.Resources.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="500"
       Title="VisualSetupPage">
@@ -39,7 +39,7 @@
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition Width="50"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-
+                        
                         <TextBlock
                             Grid.Column="0"
                             Style="{StaticResource TypisheTextBlockStyle}"
@@ -861,8 +861,201 @@
                             Click="EditBrushOnClick">
                         </Button>
                     </Grid>
-                    
-                    
+
+                    <TextBlock
+                        Style="{StaticResource TypisheTextBlockStyle}"
+                        HorizontalAlignment="Center"
+                        Text="Typing background"
+                        
+                        Margin="0 20 0 20"
+                        FontWeight="Black">
+                    </TextBlock>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Use additional background">
+                        </TextBlock>
+
+
+                        <CheckBox
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource TypisheCheckBoxStyle}"
+                            
+                            Name="UseAdditionalBackgroundCheckBox"
+                            Checked="UseAdditionalBackgroundCheckBox_Checked"
+                            Unchecked="UseAdditionalBackgroundCheckBox_Checked">
+                        </CheckBox>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Enable background parallax">
+                        </TextBlock>
+
+
+                        <CheckBox
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource TypisheCheckBoxStyle}"
+                            
+                            Name="EnableBackgroundParallaxEffect"
+                            Checked="EnableBackgroundParallaxEffect_Checked"
+                            Unchecked="EnableBackgroundParallaxEffect_Checked">
+                        </CheckBox>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Additional wallpaper brush">
+                        </TextBlock>
+
+                        <Rectangle
+                            Grid.Column="1"
+                            Name="AdditionalWallpaperBrushRectangle"
+                            
+                            Fill="{Binding Path=AdditionalWallpaperBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            Stroke="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            RadiusX="8" RadiusY="8"
+                            Margin="8 0 8 0">
+                        </Rectangle>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditAdditionalWallpaperBrushButton"
+                            Click="EditBrushOnClick">
+                        </Button>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Enable background parallax">
+                        </TextBlock>
+
+                        <Slider
+                            Grid.Column="1"
+                            MinWidth="20"
+                            Margin="8 0 8 0"
+                            
+                            Style="{StaticResource TypisheHorizontalSliderStyle}"
+                            Value="{Binding Path=BlurRadius, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            Minimum="0"
+                            Maximum="100"
+                            
+                            IsSnapToTickEnabled="True" 
+                            TickFrequency="0.1"
+                            
+                            SmallChange="1"
+                            Name="BlurRadiusSlider">
+                        </Slider>
+
+                        <TextBox
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheTextBoxStyle}"
+                            
+                            Name="BlurRadiusTextBox"
+                            Text="{Binding ElementName=BlurRadiusSlider, Path=Value, Mode=TwoWay}">
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Margin="0 8 0 8" Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource TypisheTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            
+                            Text="Additional wallpaper effect">
+                        </TextBlock>
+
+                        <controls:ClippingBorder
+                            Grid.Column="1"
+                            ClipToBounds="True"
+                            
+                            Background="Transparent"
+                            BorderBrush="{Binding Path=ControlBorderBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                            
+                            CornerRadius="8"
+                            BorderThickness="1"
+                            Margin="8 0 8 0">
+
+                            <Rectangle
+                                RadiusX="8"
+                                RadiusY="8"
+                                
+                                Fill="{Binding Path=AdditionalWallpaperBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                                Effect="{Binding Path=AdditionalBackgroundWallpaperEffect, Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+                            </Rectangle>
+                        </controls:ClippingBorder>
+
+                        <Button
+                            Grid.Column="2"
+                            Style="{StaticResource TypisheButtonStyle}"
+                            Content="Edit"
+                            
+                            Name="EditAdditionalWallpaperEffectButton"
+                            Click="EditAdditionalWallpaperEffectButton_Click">
+                        </Button>
+                    </Grid>
+
+                    <controls1:EffectPicker
+                        Height="220">
+                        
+                    </controls1:EffectPicker>
                 </StackPanel>
 
                 <Canvas Name="PickerPositioningCanvas">
@@ -876,6 +1069,17 @@
                         x:Name="BrushPicker"
                         Visibility="Hidden">
                     </brushpicker:BrushPicker>
+
+                    <fontpicker:FontPicker 
+                        Height="220"
+                        Width="480"
+                        
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        
+                        x:Name="FontPicker"
+                        Visibility="Hidden">
+                    </fontpicker:FontPicker>
                 </Canvas>
             </Grid>
         </asw:AnimatedScrollViewer>
