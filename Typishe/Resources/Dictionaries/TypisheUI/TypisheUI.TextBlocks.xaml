@@ -15,6 +15,18 @@
     </Style>
 
     <Style
+        x:Key="TypisheHighlightableTextBlockStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource TypisheTextBlockStyle}">
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{Binding Path=AccentFontBrush, Source={x:Static setup:ApplicationSetup.VisualSetup}}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
         x:Key="TypisheBigTextBlockStyle"
         TargetType="TextBlock"
         BasedOn="{StaticResource TypisheTextBlockStyle}">
