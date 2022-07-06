@@ -147,6 +147,45 @@
   <data name="EnableHardcoreMode" xml:space="preserve">
     <value>Enable the Hardcore Mode</value>
   </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="FontWeight" xml:space="preserve">
+    <value>Font weight</value>
+  </data>
+  <data name="FwBlack" xml:space="preserve">
+    <value>900, Black</value>
+  </data>
+  <data name="FwBold" xml:space="preserve">
+    <value>700, Bold</value>
+  </data>
+  <data name="FwExtraBold" xml:space="preserve">
+    <value>800, Extra bold</value>
+  </data>
+  <data name="FwExtraLight" xml:space="preserve">
+    <value>200, Extra light</value>
+  </data>
+  <data name="FwLight" xml:space="preserve">
+    <value>300, Light</value>
+  </data>
+  <data name="FwMedium" xml:space="preserve">
+    <value>500, Medium</value>
+  </data>
+  <data name="FwRegular" xml:space="preserve">
+    <value>400, Regular</value>
+  </data>
+  <data name="FwSemiBold" xml:space="preserve">
+    <value>600, Semi-bold</value>
+  </data>
+  <data name="FwThin" xml:space="preserve">
+    <value>100, Thin</value>
+  </data>
+  <data name="FwUltraBlack" xml:space="preserve">
+    <value>999, Ultra black</value>
+  </data>
+  <data name="FwUltraThin" xml:space="preserve">
+    <value>001, Ultra thin</value>
+  </data>
   <data name="ImageBrush" xml:space="preserve">
     <value>ImageBrush</value>
   </data>
@@ -235,6 +274,24 @@
   </data>
   <data name="StUniformToFill" xml:space="preserve">
     <value>Uniform to fill</value>
+  </data>
+  <data name="TdBaseLine" xml:space="preserve">
+    <value>Base line</value>
+  </data>
+  <data name="TdNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="TdOverLine" xml:space="preserve">
+    <value>Over line</value>
+  </data>
+  <data name="TdStrikeThrough" xml:space="preserve">
+    <value>Strike through</value>
+  </data>
+  <data name="TdUnderLine" xml:space="preserve">
+    <value>Under line</value>
+  </data>
+  <data name="TextDecorations" xml:space="preserve">
+    <value>Text decorations</value>
   </data>
   <data name="TileMode" xml:space="preserve">
     <value>Tile mode</value>

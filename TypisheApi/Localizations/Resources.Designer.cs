@@ -151,6 +151,123 @@ namespace TypisheApi.Localizations {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Font size.
+        /// </summary>
+        public static string FontSize {
+            get {
+                return ResourceManager.GetString("FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Font weight.
+        /// </summary>
+        public static string FontWeight {
+            get {
+                return ResourceManager.GetString("FontWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 900, Black.
+        /// </summary>
+        public static string FwBlack {
+            get {
+                return ResourceManager.GetString("FwBlack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 700, Bold.
+        /// </summary>
+        public static string FwBold {
+            get {
+                return ResourceManager.GetString("FwBold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 800, Extra bold.
+        /// </summary>
+        public static string FwExtraBold {
+            get {
+                return ResourceManager.GetString("FwExtraBold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 200, Extra light.
+        /// </summary>
+        public static string FwExtraLight {
+            get {
+                return ResourceManager.GetString("FwExtraLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 300, Light.
+        /// </summary>
+        public static string FwLight {
+            get {
+                return ResourceManager.GetString("FwLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 500, Medium.
+        /// </summary>
+        public static string FwMedium {
+            get {
+                return ResourceManager.GetString("FwMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 400, Regular.
+        /// </summary>
+        public static string FwRegular {
+            get {
+                return ResourceManager.GetString("FwRegular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 600, Semi-bold.
+        /// </summary>
+        public static string FwSemiBold {
+            get {
+                return ResourceManager.GetString("FwSemiBold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 100, Thin.
+        /// </summary>
+        public static string FwThin {
+            get {
+                return ResourceManager.GetString("FwThin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 999, Ultra black.
+        /// </summary>
+        public static string FwUltraBlack {
+            get {
+                return ResourceManager.GetString("FwUltraBlack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 001, Ultra thin.
+        /// </summary>
+        public static string FwUltraThin {
+            get {
+                return ResourceManager.GetString("FwUltraThin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ImageBrush.
         /// </summary>
         public static string ImageBrush {
@@ -390,6 +507,60 @@ namespace TypisheApi.Localizations {
         public static string StUniformToFill {
             get {
                 return ResourceManager.GetString("StUniformToFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Base line.
+        /// </summary>
+        public static string TdBaseLine {
+            get {
+                return ResourceManager.GetString("TdBaseLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на None.
+        /// </summary>
+        public static string TdNone {
+            get {
+                return ResourceManager.GetString("TdNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Over line.
+        /// </summary>
+        public static string TdOverLine {
+            get {
+                return ResourceManager.GetString("TdOverLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Strike through.
+        /// </summary>
+        public static string TdStrikeThrough {
+            get {
+                return ResourceManager.GetString("TdStrikeThrough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Under line.
+        /// </summary>
+        public static string TdUnderLine {
+            get {
+                return ResourceManager.GetString("TdUnderLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Text decorations.
+        /// </summary>
+        public static string TextDecorations {
+            get {
+                return ResourceManager.GetString("TextDecorations", resourceCulture);
             }
         }
         
