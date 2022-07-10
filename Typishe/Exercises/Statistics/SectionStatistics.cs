@@ -25,8 +25,9 @@ namespace Typishe.Exercises
     public class TextInputSectionStatistics : ScoredSectionStatistics
     {
         public double AverageTypingSpeedCpm { get; set; }
+        public Dictionary<int, string> MistakenSections { get; set; } = new Dictionary<int, string>();
 
-        public List<double> SecondaryTypingSpeed { get; set; }
-        public Dictionary<int, string> MistakenSections { get; set; }
+        public List<double> SecondaryAverageCpm { get; set; } = new List<double>();
+        public List<double> SecondaryInstCpm { get; set; } = new List<double>();
     }
 }
