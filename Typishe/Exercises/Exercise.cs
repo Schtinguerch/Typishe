@@ -21,14 +21,16 @@ namespace Typishe.Exercises
         public event SectionStartedHandler SectionStarted;
 
         public ExerciseView ExerciseView { get; set; }
+
         private ExerciseData _exerciseData;
+        private List<ExerciseStatistics> _allExerciseStatistics;
 
         private bool _isLoadingSuccessful = false;
         private string _sourceFolder;
         public string SourceFolder => _sourceFolder;
 
         private int _selectedSectionIndex = 0;
-        
+
 
         public void Load(string folderPath)
         {
@@ -43,6 +45,9 @@ namespace Typishe.Exercises
             }
 
             var jsonFilename = Path.Combine(folderPath, "ExerciseData.json");
+            var jsonStatsFilename = Path.Combine(folderPath, "StatisticsData.json");
+
+            _sourceFolder = folderPath;
             if (!File.Exists(jsonFilename))
             {
                 Logger.Add($"Exercise loading: file searching \"{jsonFilename}\"", "FAILED");
@@ -62,6 +67,28 @@ namespace Typishe.Exercises
             {
                 Logger.Add($"JSON parcing \"{jsonFilename}\", {ex.Message}", "FAILED");
                 return;
+            }
+
+            if (!File.Exists(jsonStatsFilename))
+            {
+                Logger.Add($"Exercise loading: statistics file searching \"{jsonStatsFilename}\"", "WARNING");
+                _allExerciseStatistics = new List<ExerciseStatistics>();
+            }
+
+            else
+            {
+                code = File.ReadAllText(jsonStatsFilename).Replace("@folder", folderPath);
+
+                try
+                {
+                    _allExerciseStatistics = JsonConvert.DeserializeObject<List<ExerciseStatistics>>(code, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                    Logger.Add("JSON statistics parcing", "SUCCESS");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Add($"JSON statistics parcing \"{jsonStatsFilename}\", {ex.Message}", "FAILED");
+                    return;
+                }
             }
 
             _isLoadingSuccessful = true;
@@ -95,6 +122,7 @@ namespace Typishe.Exercises
             
             if (_selectedSectionIndex == _exerciseData.Sections.Count)
             {
+                SaveStatistics();
                 ExerciseFinished?.Invoke();
                 return;
             }
@@ -103,6 +131,15 @@ namespace Typishe.Exercises
 
             ExerciseView.OpenSection(section);
             SectionStarted?.Invoke(section);
+        }
+
+        public void SaveStatistics()
+        {
+            _allExerciseStatistics.Add(ExerciseView.StatisticsWorker.ExerciseStatistics);
+            var jsonStatistics = JsonConvert.SerializeObject(_allExerciseStatistics, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+
+            jsonStatistics = jsonStatistics.Replace(_sourceFolder, "@folder");
+            File.WriteAllText(Path.Combine(_sourceFolder, "StatisticsData.json"), jsonStatistics);
         }
 
         public Exercise(ExerciseView exerciseView)

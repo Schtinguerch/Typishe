@@ -102,6 +102,7 @@ namespace Typishe.Exercises
         public void LoadTextInputSection(ExerciseSection section)
         {
             var textExerciseSection = section as TextExerciseSection;
+            StatisticsWorker.ExerciseStatistics.SectionStatistics.Add(new TextInputSectionStatistics());
 
             ExerciseComponentViewFrame.Navigate(ExerciseControls.TextView as Page);
             Processor.TextInputStatus.SetNewText(textExerciseSection.TextToInput);
