@@ -76,7 +76,6 @@ namespace Typishe.Pages
             var qwertyLayout = JsonConvert.DeserializeObject<KeyboardLayout>(File.ReadAllText(@"C:\Users\2sust\source\repos\KeyboardTrainer\WPFMeteroWindow\bin\Debug\KeyboardLayouts\JSON LAYOUTS\QWERTY US.json"));
             var schtDvorakLayout = JsonConvert.DeserializeObject<KeyboardLayout>(File.ReadAllText(@"C:\Users\2sust\source\repos\KeyboardTrainer\WPFMeteroWindow\bin\Debug\KeyboardLayouts\JSON LAYOUTS\SchtDvorak.json"));
 
-            var parallaxEffect = new ParallaxEffect(BackgroundGrid);
             var layout = new StandardKeyboard(KeyboardGrid, schtDvorakLayout);
             var textView = new SingleLineTextView();
 
@@ -85,7 +84,10 @@ namespace Typishe.Pages
 
             var controls = new ExerciseControls(ExerciseNameTextBlock, TypingSpeedTextBlock, TypingTimeTextBlock, PassPercentageTextBlock, layout, textView);
             var exerciseView = new ExerciseView(controls);
+
             var keyPressProcessor = new KeyPressProcessor(this);
+            ApplicationCommander.TypingPage = this;
+            Setup.CenterNode.TypingPage = this;
 
             ExerciseAreaGrid.Children.Add(exerciseView);
             ApplicationCommander.ExerciseView = exerciseView;
