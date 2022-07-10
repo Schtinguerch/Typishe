@@ -84,6 +84,17 @@ namespace Typishe.Input.Keyboards.XamlPatterns
             CheckAndRenderKeys();
         }
 
+        public KeyboardKey()
+        {
+            InitializeComponent();
+            _splashRectangleStoryboard = FindResource("SplashRectangleStoryboard") as Storyboard;
+
+            _mainKey = "a";
+            _shiftKey = "A";
+            _altGrKey = _shiftAltGrKey = "";
+            CheckAndRenderKeys();
+        }
+
         private void CheckAndRenderKeys()
         {
             if (_mainKey.Length > 2 && _mainKey.ToLower().IsEqualOr("l shift", "r shift", "l ctrl", "r ctrl", "alt", "altgr", "l win", "r win", "caps", "tab", "back", "menu", "enter"))
