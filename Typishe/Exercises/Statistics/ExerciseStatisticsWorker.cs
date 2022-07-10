@@ -19,8 +19,14 @@ namespace Typishe.Exercises
     {
         private NumberDisplayConverter _converter;
 
-        public int _currentProgress = 0;
+        private int _currentProgress = 0;
+        private int _ticksCount = 0;
+
+        private int _previousCharCount = 0;
+        private TimeSpan _previousTime = TimeSpan.Zero;
+        
         public int TotalProgressWeight { get; set; }
+        public ExerciseStatistics ExerciseStatistics { get; set; }
 
         public TextBlock TypingSpeedTextBlock { get; set; }
         public TextBlock TypingTimeTextBlock { get; set; }
@@ -58,10 +64,17 @@ namespace Typishe.Exercises
         public void ResetOutput()
         {
             _timer.StopAndReset();
+            ExerciseStatistics = new ExerciseStatistics() { PassStartDateTime = DateTime.Now };
+
             _currentProgress = 0;
+            _ticksCount = 0;
+
+            _previousCharCount = 0;
+            _previousTime = TimeSpan.Zero;
 
             TypingTimeTextBlock.Text = "00:00.000";
             TypingSpeedTextBlock.Text = $"{_converter.Convert(0)} {TypingSpeedConvert[ApplicationSetup.FunctionalSetup.TypingSpeedMeasure].Value}";
+            PassPercentageTextBlock.Text = $"{_converter.Convert(0)} %";
         }
 
         public void UpdatePassPercentage(double addPercentage)
@@ -80,14 +93,17 @@ namespace Typishe.Exercises
 
         private void ExerciseTimerTick(TimeSpan timeElapsed)
         {
-            if (CurrentSection is not TextExerciseSection)
+            _ticksCount += 1;
+            var currentTextSection = CurrentSection as TextExerciseSection;
+
+            if (currentTextSection == null)
             {
                 TypingTimeTextBlock.Text = timeElapsed.ToString("mm\\:ss\\.fff");
                 TypingSpeedTextBlock.Text = string.Empty;
                 return;
             }
 
-            var timeToPass = (CurrentSection as TextExerciseSection).TimeToPass;
+            var timeToPass = currentTextSection.TimeToPass;
             var charactersPerMinute = InputStatus.CharartersEntered / timeElapsed.TotalMinutes;
 
             TypingTimeTextBlock.Text = $"{timeElapsed:mm\\:ss\\.fff} / {timeToPass:mm\\:ss\\.fff}";
@@ -95,6 +111,33 @@ namespace Typishe.Exercises
 
             var measuredSpeed = charactersPerMinute * measure.Key;
             TypingSpeedTextBlock.Text = $"{_converter.Convert(measuredSpeed)} {measure.Value}";
+
+            if (_ticksCount % 20 == 0) //Invoke that code every second
+            {
+                var charEntered = InputStatus.CharartersEntered - _previousCharCount;
+                var secondElapsed = (timeElapsed - _previousTime).TotalSeconds;
+
+                _previousCharCount = InputStatus.CharartersEntered;
+                _previousTime = timeElapsed;
+
+                var secondInstantCpm = charEntered / secondElapsed * 60d;
+                var inputStatistics = ExerciseStatistics.SectionStatistics.Last() as TextInputSectionStatistics;
+
+                inputStatistics.SecondaryAverageCpm.Add(charactersPerMinute);
+                inputStatistics.SecondaryInstCpm.Add(secondInstantCpm);
+            }
+        }
+
+        public void CollectLeftStatistics()
+        {
+            if (CurrentSection is TextExerciseSection)
+            {
+                var charactersPerMinute = InputStatus.CharartersEntered / _timer.Elapsed.TotalMinutes;
+                var inputStatistics = ExerciseStatistics.SectionStatistics.Last() as TextInputSectionStatistics;
+
+                inputStatistics.AverageTypingSpeedCpm = charactersPerMinute;
+                inputStatistics.PassTime = _timer.Elapsed;
+            }
         }
         
         private Dictionary<TypingSpeedMeasure, KeyValuePair<double, string>> TypingSpeedConvert = new Dictionary<TypingSpeedMeasure, KeyValuePair<double, string>>()
