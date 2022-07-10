@@ -35,7 +35,7 @@
         </Storyboard>
     </Page.Resources>
 
-    <Grid Background="{Binding Path=BackgroundBrush,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="48"></RowDefinition>
             <RowDefinition Height="48"></RowDefinition>
@@ -49,36 +49,6 @@
             <ColumnDefinition Width="800"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <Grid 
-            Grid.Row="0"
-            Grid.Column="1"
-            
-            Grid.RowSpan="4"
-            Grid.ColumnSpan="3"
-            
-            Name="BackgroundGrid"
-            RenderTransformOrigin="0.5 0.5">
-
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
-                    <TranslateTransform X="0" Y="0"></TranslateTransform>
-                </TransformGroup>
-            </Grid.RenderTransform>
-
-            <Grid.Effect>
-                <BlurEffect 
-                    Radius="{Binding Path=BlurRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
-                    KernelType="{Binding Path=BlurType ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
-                </BlurEffect>
-            </Grid.Effect>
-
-            <Grid 
-                Background="{Binding Path=AdditionalWallpaperBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
-                Effect="{Binding Path=AdditionalBackgroundWallpaperEffect ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
-            </Grid>
-        </Grid>
 
         <StackPanel 
             Grid.Row="0"

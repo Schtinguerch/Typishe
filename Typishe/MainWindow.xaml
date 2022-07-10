@@ -8,7 +8,7 @@
     xmlns:setup="clr-namespace:Typishe.Setup"
     
     WindowTitleBrush="Transparent"
-    Background="{Binding Path=AccentBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+    Background="{Binding Path=BackgroundBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
     
     xmlns:local="clr-namespace:Typishe" xmlns:controls="clr-namespace:Typishe.Resources.Controls"
     mc:Ignorable="d"
@@ -21,14 +21,64 @@
     ShowIconOnTitleBar="False"
     WindowStartupLocation="CenterScreen">
 
+    <mah:MetroWindow.Resources>
+        <Storyboard x:Key="CurtainDownStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="CurtainRectangle"
+                Storyboard.TargetProperty="Opacity"
+                
+                To="1"
+                Duration="00:00:0.5"
+                DecelerationRatio="0.5">
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="CurtainUpStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="CurtainRectangle"
+                Storyboard.TargetProperty="Opacity"
+                
+                To="0"
+                Duration="00:00:0.5"
+                DecelerationRatio="0.5">
+            </DoubleAnimation>
+        </Storyboard>
+        
+        
+    </mah:MetroWindow.Resources>
+
     <Grid>
+        <Grid 
+            Name="BackgroundGrid"
+            RenderTransformOrigin="0.5 0.5">
+
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.2" ScaleY="1.2"></ScaleTransform>
+                    <TranslateTransform X="0" Y="0"></TranslateTransform>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <Grid.Effect>
+                <BlurEffect 
+                    Radius="{Binding Path=BlurRadius ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                    KernelType="{Binding Path=BlurType ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+                </BlurEffect>
+            </Grid.Effect>
+
+            <Grid 
+                Background="{Binding Path=AdditionalWallpaperBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+                Effect="{Binding Path=AdditionalBackgroundWallpaperEffect ,Source={x:Static setup:ApplicationSetup.VisualSetup}}">
+            </Grid>
+        </Grid>
+        
         <Frame
             Name="MainWindowFrame"
             NavigationUIVisibility="Hidden"
-            Background="{Binding Path=AccentBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            Background="Transparent"
         
             Margin="0 -32 0 0"
-            Source="Pages/TypingPage.xaml">
+            Source="Pages/StartPage.xaml">
         </Frame>
 
         <controls:TemporaryPopupMessage
@@ -37,5 +87,14 @@
             VerticalAlignment="Top"
             Margin="40">
         </controls:TemporaryPopupMessage>
+
+        <Rectangle
+            Fill="{Binding Path=BloomShadowBrush ,Source={x:Static setup:ApplicationSetup.VisualSetup}}"
+            Opacity="0"
+            Name="CurtainRectangle"
+            
+            Margin="0 -32 0 0"
+            Visibility="Collapsed">
+        </Rectangle>
     </Grid>
 </mah:MetroWindow>
