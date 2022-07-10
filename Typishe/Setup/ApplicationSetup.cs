@@ -7,7 +7,7 @@ using System.Windows;
 
 using Typishe.Service;
 using TypisheApi.Setup;
-using Localization = TypisheApi.Localizations.Resources;
+using Commands = TypisheApi.Localizations.Commands;
 
 using Newtonsoft.Json;
 using System.Windows.Media.Imaging;
@@ -53,7 +53,7 @@ namespace Typishe.Setup
             RaidedExerciseFontSize = 36d,
             RaidedExerciseFontWeight = FontWeights.Bold,
 
-
+            BloomShadowBrush = Brushes.Black,
             BackgroundBrush = "#1E1E1E".ToSolidSolorBrush(),
             BackgroundFontBrush = Brushes.White,
 
@@ -315,10 +315,11 @@ namespace Typishe.Setup
             NumberDisplay = NumberDisplay.ArabicNumbers,
             ShortCuts = new Dictionary<List<Key>, string>()
             {
-                { new List<Key>() { Key.LeftCtrl, Key.J }, Localization.ReloadExercise },
-                { new List<Key>() { Key.LeftCtrl, Key.U }, Localization.LoadNextExercise },
-                { new List<Key>() { Key.LeftCtrl, Key.M }, Localization.LoadPreviousExercise },
-                { new List<Key>() { Key.LeftCtrl, Key.H }, Localization.LoadRandomExercise },
+                { new List<Key>() { Key.LeftCtrl, Key.J }, Commands.ReloadExercise },
+                { new List<Key>() { Key.LeftCtrl, Key.U }, Commands.LoadNextExercise },
+                { new List<Key>() { Key.LeftCtrl, Key.M }, Commands.LoadPreviousExercise },
+                { new List<Key>() { Key.LeftCtrl, Key.H }, Commands.LoadRandomExercise },
+                { new List<Key>() { Key.Escape }, Commands.BackToStartPage },
             }
         };
 

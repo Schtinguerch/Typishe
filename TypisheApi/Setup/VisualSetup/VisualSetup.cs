@@ -25,6 +25,7 @@ namespace TypisheApi.Setup
 
         private Color _shadowColor;
         private Brush 
+            _bloomShadowBrush,
             _additionalWallpaperBrush,
             _backgroundBrush, 
             _backgroundFontBrush, 
@@ -101,6 +102,7 @@ namespace TypisheApi.Setup
             cloneSetup.RaidedExerciseFontSize = RaidedExerciseFontSize;
             cloneSetup.RaidedExerciseFontWeight = RaidedExerciseFontWeight;
 
+            cloneSetup.BloomShadowBrush = BloomShadowBrush;
 
             cloneSetup.BackgroundBrush = BackgroundBrush;
             cloneSetup.BackgroundFontBrush = BackgroundFontBrush;
@@ -303,6 +305,17 @@ namespace TypisheApi.Setup
         #endregion
 
         #region General Brushes
+
+        public Brush BloomShadowBrush
+        {
+            get => _bloomShadowBrush;
+            set
+            {
+                _bloomShadowBrush = value;
+                OnPropertyChanged(nameof(BloomShadowBrush));
+            }
+        }
+
         public Brush BackgroundBrush
         {
             get => _backgroundBrush;
