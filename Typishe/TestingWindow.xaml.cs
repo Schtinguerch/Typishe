@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Typishe.Resources.Controls;
 using Typishe.Resources.Controls.BrushPicker;
 using Typishe.Setup;
 
@@ -25,6 +25,11 @@ namespace Typishe
         public TestingWindow()
         {
             InitializeComponent();
+            Frame2.Navigate(new EffectPicker()
+            {
+                Width = 480d,
+                Height = 280d,
+            });
         }
     }
 }
