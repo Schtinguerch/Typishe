@@ -8,7 +8,8 @@ using System.Windows.Media.Animation;
 using Typishe.Exercises;
 using Typishe.Pages;
 using Typishe.Pages.TypingPageSubpages;
-using TypisheApi.Input;
+using Typishe.Setup;
+
 using Commands = TypisheApi.Localizations.Commands;
 
 namespace Typishe.Input
@@ -28,6 +29,8 @@ namespace Typishe.Input
             { Commands.LoadNextExercise, LoadNextExercise },
             { Commands.LoadRandomExercise, LoadRandomExercise },
             { Commands.OpenSettings, OpenSettings },
+            { Commands.CloseSettings, CloseSettings },
+            { Commands.BackToStartPage, BackToStartPage },
         };
 
         public static ExerciseView ExerciseView { get; set; }
@@ -87,6 +90,11 @@ namespace Typishe.Input
         private static void CloseSettings()
         {
             TypingPage.CloseSettingsPage();
+        }
+
+        private static void BackToStartPage()
+        {
+            CenterNode.AppWindow.OpenPageWithAnimation(CenterNode.StartPage);
         }
     }
 }
