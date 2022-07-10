@@ -18,6 +18,8 @@ namespace Typishe.Exercises
         private DispatcherTimer _timer;
         private Stopwatch _stopwatch;
 
+        public TimeSpan Elapsed => _stopwatch.Elapsed;
+
         public ExerciseTimer()
         {
             _interval = TimeSpan.FromMilliseconds(25);
