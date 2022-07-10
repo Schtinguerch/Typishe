@@ -186,6 +186,9 @@
   <data name="FwUltraThin" xml:space="preserve">
     <value>001, Ultra thin</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
   <data name="ImageBrush" xml:space="preserve">
     <value>ImageBrush</value>
   </data>

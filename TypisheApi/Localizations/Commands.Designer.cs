@@ -61,6 +61,24 @@ namespace TypisheApi.Localizations {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на BackToStartPage.
+        /// </summary>
+        public static string BackToStartPage {
+            get {
+                return ResourceManager.GetString("BackToStartPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на CloseSettings.
+        /// </summary>
+        public static string CloseSettings {
+            get {
+                return ResourceManager.GetString("CloseSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на LoadNextExercise.
         /// </summary>
         public static string LoadNextExercise {
