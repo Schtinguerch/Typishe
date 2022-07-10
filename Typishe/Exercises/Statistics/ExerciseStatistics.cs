@@ -8,7 +8,9 @@ namespace Typishe.Exercises
 {
     public class ExerciseStatistics
     {
-        public DateTime PassDate { get; set; }
-        public List<SectionStatistics> SectionStatistics { get; set; }
+        public DateTime PassStartDateTime { get; set; }
+        public DateTime PassEndDateTime { get; set; }
+
+        public List<SectionStatistics> SectionStatistics { get; set; } = new List<SectionStatistics>();
     }
 }
