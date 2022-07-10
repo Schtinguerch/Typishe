@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Typishe.Pages;
 using TypisheApi;
 
 namespace Typishe.Setup
@@ -33,5 +34,8 @@ namespace Typishe.Setup
                 }
             }
         }
+
+        public static TypingPage TypingPage { get; set; }
+        public static StartPage StartPage { get; set; }
     }
 }
