@@ -15,6 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+
+using Typishe.Visuality;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Page = System.Windows.Controls.Page;
 
 namespace Typishe
 {
@@ -23,6 +28,8 @@ namespace Typishe
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private Storyboard _curtainDownStoryboard, _curtainUpStoryboard;
+
         public enum DWMWINDOWATTRIBUTE
         {
             DWMWA_WINDOW_CORNER_PREFERENCE = 33
@@ -47,11 +54,38 @@ namespace Typishe
         {
             Setup.CenterNode.AppWindow = this;
             InitializeComponent();
+            var parallaxEffect = new ParallaxEffect(BackgroundGrid);
 
+            _curtainDownStoryboard = FindResource("CurtainDownStoryboard") as Storyboard;
+            _curtainUpStoryboard = FindResource("CurtainUpStoryboard") as Storyboard;
+
+            _curtainDownStoryboard.Completed += _curtainDownStoryboard_Completed;
+            _curtainUpStoryboard.Completed += _curtainUpStoryboard_Completed;
+            
             IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
             var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
             DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint));
+        }
+
+        private void _curtainUpStoryboard_Completed(object? sender, EventArgs e)
+        {
+            CurtainRectangle.Visibility = Visibility.Collapsed;
+        }
+
+        private Page _openingPage;
+        private void _curtainDownStoryboard_Completed(object? sender, EventArgs e)
+        {
+            MainWindowFrame.Navigate(_openingPage);
+            _curtainUpStoryboard.Begin();
+        }
+
+        public void OpenPageWithAnimation(Page page)
+        {
+            CurtainRectangle.Visibility = Visibility.Visible;
+
+            _openingPage = page;
+            _curtainDownStoryboard.Begin();
         }
     }
 }
